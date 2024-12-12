@@ -31,23 +31,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
+      # Login to Docker Hub
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
       # Build and push backend image
       - name: Build image and push backend
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend:latest
 
       # Build and push database image
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/database:latest
 
-      # Build and push httpd image
-      - name: Build image and push httpd
+      # Build and push http-server image
+      - name: Build image and push http-server
         uses: docker/build-push-action@v3
         with:
-          context: ./httpd
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest
+          context: ./http-server
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/http-server:latest
