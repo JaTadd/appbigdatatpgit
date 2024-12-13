@@ -18,6 +18,7 @@
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<testcontainers.version>1.17.4</testcontainers.version>
 		<validation.version>2.0.1.Final</validation.version>
+		<sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -112,7 +113,11 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${sonar-maven-plugin.version}</version>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
