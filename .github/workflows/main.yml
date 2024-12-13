@@ -38,6 +38,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=JaTadd_appbigdatatpgit \
           --file simple-api/pom.xml
+        working-directory: simple-api
 
        
   build-and-push-docker-image:
