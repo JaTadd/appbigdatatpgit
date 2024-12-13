@@ -37,7 +37,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=JaTadd_appbigdatatpgit \
-          --file ./simple-api/pom.xml
+          --file simple-api/pom.xml
+
        
   build-and-push-docker-image:
     needs: test-backend
